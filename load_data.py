@@ -1,7 +1,7 @@
 import json
 from pymongo import MongoClient
 
-uri = "mongodb+srv://BAHA09:BAHA0908@mg.it5g4oq.mongodb.net/?appName=MG"
+uri = "laURL"
 client = MongoClient(uri)
 
 db = client["restaurants_db"]
