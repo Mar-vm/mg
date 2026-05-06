@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🍽️ Aplicación Web CRUD con Flask + MongoDB Atlas  
 Gestión de Restaurantes
 
@@ -128,3 +129,6 @@ El dataset proporcionado se cargó mediante el script `load_data.py`, que insert
 📚 Autor
 Gael Alexander Basana Hernandez - Mariana Molina Villanueva
 Gestión de Datos Masivos – Práctica CRUD con MongoDB Atlas
+=======
+# mg
+>>>>>>> b7b647c346388345b6402eaecec058e6ee4fa943
