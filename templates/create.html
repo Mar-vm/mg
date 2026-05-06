@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Restaurante</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<h1>➕ Registrar Restaurante</h1>
+
+<div class="container">
+
+    <form method="POST" style="flex-direction: column; align-items: center;">
+        <input name="name" placeholder="Nombre" required>
+        <input name="borough" placeholder="Distrito" required>
+        <input name="cuisine" placeholder="Tipo de cocina" required>
+        <input name="zipcode" placeholder="Código Postal" required>
+
+        <button type="submit">Guardar</button>
+    </form>
+
+    <a href="/" class="new-btn" style="background-color:#6c757d;">⬅ Volver</a>
+
+</div>
+
+</body>
+</html>

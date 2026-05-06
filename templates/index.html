@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurantes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<h1>Lista de Restaurantes</h1>
+
+<div class="container">
+
+    <!-- FILTROS -->
+    <form method="GET">
+        <input id="borough" type="text" name="borough" placeholder="Distrito">
+        <input id="cuisine" type="text" name="cuisine" placeholder="Tipo de cocina">
+
+        <button type="submit">Buscar</button>
+
+        <button type="button" onclick="limpiarFiltros()">
+            Limpiar
+        </button>
+    </form>
+
+    <!-- CONTADOR -->
+    <p style="text-align:center;">
+        Se encontraron <strong>{{ total }}</strong> restaurantes
+    </p>
+
+    <!-- BOTÓN NUEVO -->
+    <a href="/create" class="new-btn">➕ Nuevo Restaurante</a>
+
+    <!-- LISTA -->
+    <ul>
+        {% for r in restaurants %}
+        <li>
+            <div>
+                <strong>{{ r.name or "Sin nombre" }}</strong><br>
+                <small>{{ r.cuisine or "N/A" }} | {{ r.borough or "N/A" }}</small>
+            </div>
+
+            <div>
+                <a class="edit" href="/edit/{{ r._id }}">Editar</a>
+                <a class="delete" href="/delete/{{ r._id }}" onclick="return confirm('¿Eliminar restaurante?')">
+                    Eliminar
+                </a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+<script>
+    const boroughInput = document.getElementById("borough");
+    const cuisineInput = document.getElementById("cuisine");
+
+    // 🔹 Cargar valores guardados
+    window.onload = () => {
+        boroughInput.value = localStorage.getItem("borough") || "";
+        cuisineInput.value = localStorage.getItem("cuisine") || "";
+    };
+
+    // 🔹 Guardar mientras escribe
+    boroughInput.addEventListener("input", () => {
+        localStorage.setItem("borough", boroughInput.value);
+    });
+
+    cuisineInput.addEventListener("input", () => {
+        localStorage.setItem("cuisine", cuisineInput.value);
+    });
+
+    // Limpiar TODO (UI + almacenamiento + backend)
+    function limpiarFiltros() {
+        localStorage.removeItem("borough");
+        localStorage.removeItem("cuisine");
+
+        boroughInput.value = "";
+        cuisineInput.value = "";
+
+        window.location.href = "/";
+    }
+</script>
+
+</body>
+</html>

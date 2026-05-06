@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Restaurante</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<h1>✏️ Editar Restaurante</h1>
+
+<div class="container">
+
+    <form method="POST" style="flex-direction: column; align-items: center;">
+        <input name="name" value="{{ restaurant.name }}" required>
+        <input name="cuisine" value="{{ restaurant.cuisine }}" required>
+
+        <button type="submit">Actualizar</button>
+    </form>
+
+    <a href="/" class="new-btn" style="background-color:#6c757d;">⬅ Volver</a>
+
+</div>
+
+</body>
+</html>
